@@ -52,6 +52,7 @@ body {
   width: 100%;
   background: var(--blur);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
