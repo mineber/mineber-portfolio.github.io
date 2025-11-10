@@ -195,6 +195,7 @@ p {
   .nav-links.open {
     transform: translateX(0);
     display: flex;
+    transform: translateY(-11px);
   }
 }
 
