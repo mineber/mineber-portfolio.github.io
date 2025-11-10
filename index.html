@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antonio Bermejo Marín | Portfolio</title>
+
+  <!-- Fuente y CSS -->
+  <link rel="stylesheet" href="styleS.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3097/3097035.png" type="image/png">
+
+  <style>
+    /* ==== Fondo animado de estrellas ==== */
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    /* ==== Hero ==== */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .intro {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 1s ease both;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .intro h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .light .hero .socials a{
+        background-color: black;
+        color: white;
+    }
+    .socials a {
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 0.6rem 1.2rem;
+      transition: all 0.3s;
+      font-weight: 500;
+      text-decoration: none;
+      color: #7c3aed;
+      background-color: rgb(14, 14, 14);
+    }
+
+    .socials a:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    /* ==== Responsive ==== */
+    @media (max-width: 768px) {
+      .intro {
+        padding: 2rem 1.5rem;
+      }
+      .intro h1 {
+        font-size: 1.8rem;
+      }
+      .intro p {
+        font-size: 1rem;
+      }
+      .socials a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro {
+        border-radius: 10px;
+        padding: 1.5rem;
+      }
+      .intro h1 {
+        font-size: 1.5rem;
+      }
+      .socials {
+        flex-direction: column;
+      }
+      .socials a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Fondo de estrellas -->
+  <canvas id="stars"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">
+      <span>🚀 Antonio BM</span>
+    </div>
+
+    <nav class="nav-links">
+      <a class="active">Home</a>
+      <a href="sobremi.html">Biografía</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
+      <button id="menuToggle" aria-label="Abrir menú" class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="hero">
+    <div class="intro">
+      <h1>Antonio Bermejo Marín</h1>
+      <p>
+        Desarrollador Web Full Stack apasionado por crear experiencias digitales 
+        intuitivas, funcionales y visualmente impactantes.
+      </p>
+
+      <div class="socials">
+        <a href="#" target="_blank">🔗 LinkedIn</a>
+        <a href="tel:+34633163586">📞 Teléfono</a>
+        <a href="mailto:mineber1996@gmail.com">✉️ Email</a>
+        <a href="https://github.com/mineber" target="_blank">💻 GitHub</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="text-align:center; padding:2rem 0; color:var(--muted); font-size:0.9rem;">
+    © <span id="year"></span> Antonio Bermejo Marín 
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Actualizar año automáticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fondo animado de estrellas
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: Math.random() * 0.4 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    drawStars();
+  </script>
+
+  <script>
+    // ==== Script de tema claro/oscuro + menú ====
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.querySelector(".nav-links");
+
+    // Cargar tema desde localStorage
+    if (localStorage.getItem("theme") === "light") {
+      body.classList.add("light");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+    });
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

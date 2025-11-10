@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre mí — Antonio Bermejo Marín</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3097/3097035.png" type="image/png">
+
+  <style>
+    /* ==== Fondo animado ==== */
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    /* ==== Contenido ==== */
+    main {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--text);
+      line-height: 1.7;
+      animation: fadeIn 1s ease both;
+    }
+
+    section {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    body.light section {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+    }
+
+    h2, h3 {
+      color: var(--accent);
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    /* ==== Responsive ==== */
+    @media (max-width: 768px) {
+      main {
+        padding: 7rem 1.2rem 2rem;
+      }
+      section {
+        padding: 1.5rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">
+      🚀 <span>Antonio BM</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a class="active">Biografía</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
+      <button id="menuToggle" aria-label="Abrir menú" class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main>
+    <section id="intro">
+      <h2>¿Quién soy?</h2>
+      <p>
+        Soy un programador web con 3 años de experiencia en FrontEnd creando interfaces web responsivas y funcionales. 
+        Tengo conocimientos avanzados en tecnologías HTML, CSS, JavaScript y herramientas como GIT y Figma.
+        Apasionado por la experiencia de usuario, el rendimiento y la accesibilidad, siempre busco implementar soluciones eficientes 
+        y mantenerme actualizado en tecnologías web. Actualmente trabajo en un proyecto personal en PHP.
+      </p>
+    </section>
+
+    <section id="conocimientos">
+      <h2>Mis conocimientos</h2>
+      <p>
+        A lo largo de estos años de estudio y trabajo he podido adquirir experiencia en diversas áreas del desarrollo web.
+      </p>
+
+      <h3>Java</h3>
+      <p>
+        Aprendí Java como base de programación orientada a objetos, desarrollando aplicaciones de consola y proyectos académicos.
+        Más tarde participé en un proyecto que utilizaba JSF, donde, aunque me enfoqué en el FrontEnd con XHTML, CSS y JavaScript, 
+        también tuve contacto con el código Java.
+      </p>
+
+      <h3>SpringBoot + Angular</h3>
+      <p>
+        Realicé un curso en Ipartek donde desarrollamos una aplicación completa con SpringBoot (BackEnd) y Angular (FrontEnd).  
+        Aprendí a crear APIs RESTful, manejar rutas, controladores, servicios e integrar JPA con bases de datos.
+        <br><a href="https://github.com/mineber/examen-ipartek-SpringBoot-Angular" target="_blank">Ver proyecto en GitHub</a>
+      </p>
+
+      <h3>HTML, CSS y JavaScript</h3>
+      <p>
+        En mis 3 años de experiencia profesional, he trabajado extensamente con estas tecnologías para construir interfaces 
+        atractivas y accesibles. Me apasiona el diseño y la creación de experiencias fluidas para el usuario, 
+        utilizando preprocesadores como SASS y frameworks como Bootstrap.
+      </p>
+
+      <h3>PHP y MySQL</h3>
+      <p>
+        Durante mis estudios descubrí que PHP era mi lenguaje favorito. He creado proyectos personales como una comunidad para el juego 
+        “Geometry Dash”, donde aprendí sobre CRUD, autenticación y conexión con bases de datos MySQL.
+      </p>
+    </section>
+
+    <section id="frameworks">
+      <h2>Frameworks</h2>
+
+      <h3>Angular</h3>
+      <p>
+        Con Angular aprendí sobre componentes, servicios, módulos y consumo de APIs RESTful. 
+        En mi entorno laboral participé en un proyecto donde trabajé en la migración y mantenimiento de una versión moderna del framework.
+      </p>
+
+      <h3>Laravel</h3>
+      <p>
+        Aprendí Laravel en mis estudios, comprendiendo el patrón MVC y el desarrollo backend con PHP. 
+        Aunque aún no lo usé profesionalmente, tengo confianza en mis conocimientos y facilidad para adaptarme a proyectos con este framework.
+      </p>
+    </section>
+
+    <section id="otros">
+      <h2>Otros Lenguajes</h2>
+      <ul>
+        <li>Python</li>
+        <li>MongoDB</li>
+        <li>
+          React (curso en Udemy — 
+          <a href="https://github.com/mineber/rick-morty-course" target="_blank">ver proyecto</a>)
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="text-align:center; padding:2rem 0; color:var(--muted); font-size:0.9rem;">
+    © <span id="year"></span> Antonio Bermejo Marín
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fondo animado de estrellas
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: Math.random() * 0.4 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    drawStars();
+  </script>
+
+  <script>
+    // Tema claro/oscuro + menú
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.querySelector(".nav-links");
+
+    if (localStorage.getItem("theme") === "light") body.classList.add("light");
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+    });
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre mí — Antonio Bermejo Marín</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3097/3097035.png" type="image/png">
+
+  <style>
+    /* ==== Fondo animado ==== */
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    /* ==== Contenido ==== */
+    main {
+      padding: 8rem 2rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--text);
+      line-height: 1.7;
+      animation: fadeIn 1s ease both;
+    }
+
+    section {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    body.light section {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+    }
+
+    h2, h3 {
+      color: var(--accent);
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    /* ==== Responsive ==== */
+    @media (max-width: 768px) {
+      main {
+        padding: 7rem 1.2rem 2rem;
+      }
+      section {
+        padding: 1.5rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">
+      🚀 <span>Antonio BM</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="sobremi.html">Biografía</a>
+      <a  class="active">Portfolio</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
+      <button id="menuToggle" aria-label="Abrir menú" class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main>
+    <section id="intro">
+      <h2>Geometry dash 1 attemptable levels</h2>
+      <p>
+        Esta página web está dedicada a mis proyectos de Geometry Dash. 
+        Aquí encontrarás niveles que he conseguido pasar en 1 intento y con ello, teniendo los datos de cualquier jugador, 
+        podrán filtrar los niveles que ellos han pasado para así tener una lista completa de niveles que podrían pasar en 1 intento.
+        Esta lista servirá para conseguir estrellas más rápido y así poder mejorar sus estádisticas en el juego más rápidamente.
+        Esto es un proyecto personal que he creado con PHP para ayudar a la comunidad de Geometry Dash, una comunidad que pertenezto 
+        desde hace 10 años y que me ha aportado muchas cosas buenas en mi vida.
+      </p>
+      <a href="https://mineber-levels.infinityfreeapp.com" class="a-button" target="_blank" rel="noopener noreferrer">Visitar página de niveles</a>
+    </section>
+
+    <section id="intro">
+      <h2>Gestión de Cursos y alumnos</h2>
+      <p>
+        Esta página web fue realizada dentro del curso online de Java impartido por la empresa IPartek.
+        El objetivo de este proyecto era crear una aplicación web que permitiera gestionar cursos y alumnos,
+        Usamos tecnologías como SpringBoot para crear la base de datos, usamos PostMan para comprobar las API REST que íbamos creando y 
+        finalmente usamos Angular para crear la interfaz web.
+        Dentro de este proyecto aprendí a manejar SpringBoot y mejorar mis conocimientos de Angular, 
+        dos tecnologías que me han servido mucho en mi desarrollo profesional.
+        Este proyecto no está alojado en ningún servidor, pero si quieres ver el código fuente puedes visitar mi GitHub.
+      </p>
+      <a href="https://github.com/mineber/examen-ipartek-SpringBoot-Angular" class="a-button" target="_blank" rel="noopener noreferrer">Ver código fuente</a>
+    </section>
+
+    
+
+    
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="text-align:center; padding:2rem 0; color:var(--muted); font-size:0.9rem;">
+    © <span id="year"></span> Antonio Bermejo Marín
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fondo animado de estrellas
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: Math.random() * 0.4 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    drawStars();
+  </script>
+
+  <script>
+    // Tema claro/oscuro + menú
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.querySelector(".nav-links");
+
+    if (localStorage.getItem("theme") === "light") body.classList.add("light");
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+    });
+
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      menuToggle.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
